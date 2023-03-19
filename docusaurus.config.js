@@ -63,7 +63,7 @@ const config = {
             label: 'Getting Started',
           },
           {
-            href: 'https://github.com/kubinity-com',
+            href: 'https://github.com/kubinity',
             label: 'GitHub',
             position: 'right',
           },
@@ -95,7 +95,7 @@ const config = {
             items: [
               {
                 label: 'GitHub',
-                href: 'https://github.com/kubinity-com',
+                href: 'https://github.com/kubinity',
               },
             ],
           },
