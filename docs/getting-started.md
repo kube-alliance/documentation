@@ -24,14 +24,9 @@ Kubernetes documentation website.
 
 ## Creating an account
 
-Kubinity is still being developed. There is no user management yet, so
-administrative actions have to be done by a human. To request an account, please
-head over to [my website](https://garrit.xyz/contact) and ask me about access to
-the cluster.
+Head over to the [Kubinity console](https://console.kubinity.com) and register your account.
 
-After your account has been created, you will be provided with a
-configuration-file that you need to copy to your home directory. KubeCTL usually
-expects this file to be at `~/.kube/config`.
+After your account has been created, you will be able to create namespaces. Head over to the "Service Accounts" tab of your namespace and download the Kubeconfig. KubeCTL usually expects this file to be at `~/.kube/config`.
 
 > **Note**: Keep in mind that this file contains secrets, so please
 handle it with care!
