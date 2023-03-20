@@ -1,4 +1,4 @@
-# [Kubinity Documentation](https://docs.kubinity.com)
+# [Kubinity Documentation](https://kubinity.com)
 
 > **Note**: Parts of this documentation may still be incomplete.
 
