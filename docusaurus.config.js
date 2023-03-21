@@ -16,7 +16,7 @@ const config = {
 
   // GitHub pages deployment config.
   // If you aren't using GitHub pages, you don't need these.
-  organizationName: 'kubinity-com', // Usually your GitHub org/user name.
+  organizationName: 'kubinity', // Usually your GitHub org/user name.
   projectName: 'Documentation', // Usually your repo name.
 
   // Even if you don't use internalization, you can use this field to set useful
@@ -37,7 +37,7 @@ const config = {
           // Please change this to your repo.
           // Remove this to remove the "edit this page" links.
           editUrl:
-            'https://github.com/kubinity-com/documentation/tree/main/',
+            'https://github.com/kubinity/documentation/tree/main/',
         },
         theme: {
           customCss: require.resolve('./src/css/custom.css'),
@@ -52,7 +52,7 @@ const config = {
       navbar: {
         title: 'Kubinity Documentation',
         logo: {
-          alt: 'My Site Logo',
+          alt: 'Kubinity Logo',
           src: 'img/logo.svg',
         },
         items: [
@@ -100,7 +100,7 @@ const config = {
             ],
           },
         ],
-        copyright: `Copyright © ${new Date().getFullYear()} Kubinity. Built with Docusaurus.`,
+        copyright: `Copyright © ${new Date().getFullYear()} Kubinity.`,
       },
       prism: {
         theme: lightCodeTheme,
