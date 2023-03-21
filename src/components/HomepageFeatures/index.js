@@ -1,64 +1,131 @@
-import React from 'react';
-import clsx from 'clsx';
-import styles from './styles.module.css';
+import React from "react";
+import {
+  createStyles,
+  Title,
+  Text,
+  Card,
+  SimpleGrid,
+  Container,
+  rem,
+} from "@mantine/core";
+import {
+  IconGauge,
+  IconCloudComputing,
+  IconChartArrowsVertical,
+  IconHammer,
+} from "@tabler/icons-react";
+import useDocusaurusContext from "@docusaurus/useDocusaurusContext";
+import { useColorMode } from "@docusaurus/theme-common";
 
-const FeatureList = [
+const featureElements = [
   {
-    title: 'Easy to Use',
-    Svg: require('@site/static/img/undraw_docusaurus_mountain.svg').default,
-    description: (
-      <>
-        Docusaurus was designed from the ground up to be easily installed and
-        used to get your website up and running quickly.
-      </>
-    ),
+    title: "High Availability",
+    description:
+      "Our clusters are built to be resiliant out of the box, without paying extra",
+    icon: IconCloudComputing,
   },
   {
-    title: 'Focus on What Matters',
-    Svg: require('@site/static/img/undraw_docusaurus_tree.svg').default,
-    description: (
-      <>
-        Docusaurus lets you focus on your docs, and we&apos;ll do the chores. Go
-        ahead and move your docs into the <code>docs</code> directory.
-      </>
-    ),
+    title: "Scale with confidence",
+    description:
+      "Kubinity is designed to easily handle growing workloads. You can scale up or down with ease, and only pay for what you use",
+    icon: IconGauge,
   },
   {
-    title: 'Powered by React',
-    Svg: require('@site/static/img/undraw_docusaurus_react.svg').default,
-    description: (
-      <>
-        Extend or customize your website layout by reusing React. Docusaurus can
-        be extended while reusing the same header and footer.
-      </>
-    ),
+    title: "Easy Tooling",
+    description:
+      "Ready to use interfaces for common tasks. Storage, Networking and DNS are neatly abstracted away",
+    icon: IconHammer,
   },
 ];
 
-function Feature({Svg, title, description}) {
-  return (
-    <div className={clsx('col col--4')}>
-      <div className="text--center">
-        <Svg className={styles.featureSvg} role="img" />
-      </div>
-      <div className="text--center padding-horiz--md">
-        <h3>{title}</h3>
-        <p>{description}</p>
-      </div>
-    </div>
-  );
-}
+export default function FeaturesCards() {
+  const { siteConfig } = useDocusaurusContext();
+  const { isDarkTheme } = useColorMode();
 
-export default function HomepageFeatures() {
+  const useStyles = createStyles((theme) => ({
+    title: {
+      fontSize: rem(34),
+      fontWeight: 900,
+
+      [theme.fn.smallerThan("sm")]: {
+        fontSize: rem(24),
+      },
+    },
+
+    description: {
+      maxWidth: 600,
+      margin: "auto",
+
+      "&::after": {
+        content: '""',
+        display: "block",
+        backgroundColor: theme.fn.primaryColor(),
+        width: rem(45),
+        height: rem(2),
+        marginTop: theme.spacing.sm,
+        marginLeft: "auto",
+        marginRight: "auto",
+      },
+    },
+
+    card: {
+      background: isDarkTheme ? theme.colors.dark[5] : theme.colors.gray[1],
+      border: `${rem(1)} solid ${
+        isDarkTheme ? theme.colors.dark[5] : theme.colors.gray[1]
+      }`,
+    },
+
+    cardTitle: {
+      color: isDarkTheme ? "white" : "black",
+      "&::after": {
+        content: '""',
+        display: "block",
+        backgroundColor: theme.fn.primaryColor(),
+        width: rem(45),
+        height: rem(2),
+        marginTop: theme.spacing.sm,
+      },
+    },
+  }));
+
+  const { classes, theme } = useStyles();
+  const features = featureElements.map((feature) => (
+    <Card
+      key={feature.title}
+      shadow="md"
+      radius="md"
+      className={classes.card}
+      padding="xl"
+    >
+      <feature.icon size={rem(50)} stroke={2} color={theme.fn.primaryColor()} />
+      <Text fz="lg" fw={500} className={classes.cardTitle} mt="md">
+        {feature.title}
+      </Text>
+      <Text fz="sm" c="dimmed" mt="sm">
+        {feature.description}
+      </Text>
+    </Card>
+  ));
+
   return (
-    <section className={styles.features}>
-      <div className="container">
-        <div className="row">
-          {FeatureList.map((props, idx) => (
-            <Feature key={idx} {...props} />
-          ))}
-        </div>
-      </div>
-    </section>
+    <Container size="lg" py="xl">
+      <Title order={2} className={classes.title} ta="center" mt="sm">
+        All the tools you need to deploy your application
+      </Title>
+
+      <Text c="dimmed" className={classes.description} ta="center" mt="md">
+        Kubinity levereges the concept of namespaces in a shared cluster. You
+        get all the benefits of managed Kubernetes for a fraction of the price.
+      </Text>
+
+      <SimpleGrid
+        cols={3}
+        spacing="xl"
+        mt={50}
+        breakpoints={[{ maxWidth: "md", cols: 1 }]}
+      >
+        {features}
+      </SimpleGrid>
+    </Container>
   );
 }
