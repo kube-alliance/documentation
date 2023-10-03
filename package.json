@@ -16,7 +16,7 @@
   "dependencies": {
     "@docusaurus/core": "2.4.3",
     "@docusaurus/preset-classic": "2.4.3",
-    "@mantine/core": "^6.0.19",
+    "@mantine/core": "^7.1.2",
     "@mdx-js/react": "1.6.22",
     "@tabler/icons-react": "^2.38.0",
     "clsx": "2.0.0",
